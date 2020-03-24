@@ -1,0 +1,2 @@
+rootProject.name='SDL-Empty'
+include ':app'
