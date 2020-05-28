@@ -14,7 +14,7 @@ import com.smartdevicelink.managers.SdlManager;
 
 public class SdlService extends Service {
     private static final String APP_ID = "8678309";
-    private static final String NOTIFICATION_TITLE = "SDL App Service Running";
+    private static final String NOTIFICATION_TITLE = "SDL App Service Running for SDL Empty";
     private static final int FOREGROUND_SERVICE_ID = 111;
 
     private SdlManager sdlManager = null;
@@ -26,11 +26,6 @@ public class SdlService extends Service {
     public void onCreate() {
         Log.d("SdlService", " onCreate");
         super.onCreate();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            enterForeground();
-        }
-    }
-    public void enterForeground() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel channel = new NotificationChannel(APP_ID, "SdlService", NotificationManager.IMPORTANCE_DEFAULT);
             NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
@@ -44,6 +39,7 @@ public class SdlService extends Service {
             }
         }
     }
+
     public void onDestroy() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             stopForeground(true);
